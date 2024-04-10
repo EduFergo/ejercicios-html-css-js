@@ -1,0 +1,7 @@
+.background-image{ 
+    width: 1000px;
+    height: 500px;
+    background-image: url(https://s3.abcstatics.com/media/play/2018/08/22/homer-simpson-kJU--1248x698@abc.JPG);
+    background-position: center;
+    background-size: cover;
+}
