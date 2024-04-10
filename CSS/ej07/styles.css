@@ -68,8 +68,12 @@
     background-color: black;
 }
 
-
 input[type="checkbox"]{
+    appearance: none;
+}
+
+
+input[type="radio"]{
     appearance: none;
 }
 
@@ -85,7 +89,4 @@ input[type="checkbox"]{
     margin-top: -10px;
 }
 
-.rotated {
-    transform: rotate(45deg);
-}
 
