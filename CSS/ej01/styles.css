@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    gap:5px;
+    margin-bottom: 20px;
+}
+
+.square{
+    width: 50px;
+    height: 50px;
+    cursor: grab;
+}
+
+.rectangle{
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: help;
+
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.black{
+    background-color: black;
+}
