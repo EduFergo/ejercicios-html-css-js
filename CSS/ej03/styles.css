@@ -1,0 +1,65 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(5, 120px);
+    grid-template-rows: repeat(3, 60px);
+}
+
+.square{
+    width: 50px;
+    height: 50px;
+    cursor: grab;
+}
+
+.rectangle{
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: help;
+
+}
+
+.border-red-solid{
+    border: 3px solid red;
+}
+
+.border-blue-dotted{
+    border: 3px dotted blue;
+}
+
+.border-yellow-dashed{
+    border: 3px dashed yellow;
+}
+
+.border-green-groove{
+    border: 3px groove green;
+}
+
+.border-black-outset{
+    border: 3px outset black;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.black{
+    background-color: black;
+}
