@@ -212,6 +212,9 @@ body{
     width: var(--diametro-saturno); 
     border-radius:125px 125px 0 0;
     background-image: linear-gradient(to bottom, #e2bf7d, #dcb674, #d6ae6b, #d1a563);
+    display: flex;
+    justify-content: center;
+    align-items: end;
   }
 
 @keyframes orbitar6 {
@@ -243,13 +246,13 @@ body{
 }
 
 @keyframes orbitar7 {
-    from{transform:rotate(0deg)translateX(180vmin)}
-    to{transform:rotate(360deg)translateX(180vmin)}
+    from{transform:rotate(0deg)translateX(183vmin)}
+    to{transform:rotate(360deg)translateX(183vmin)}
     
 }
 
 .orbita-urano{
-    --radio-orbita-orbitar7: 180vmin;
+    --radio-orbita-orbitar7: 183vmin;
     --diametro-orbita-urano: calc(var(--radio-orbita-orbitar7) * 2 );
     height: var(--diametro-orbita-urano); 
     width: var(--diametro-orbita-urano); 
@@ -271,12 +274,12 @@ body{
 }
 
 @keyframes orbitar8 {
-    from{transform:rotate(0deg)translateX(195vmin)}
-    to{transform:rotate(360deg)translateX(195vmin)}   
+    from{transform:rotate(0deg)translateX(198vmin)}
+    to{transform:rotate(360deg)translateX(198vmin)}   
 }
 
 .orbita-neptuno{
-    --radio-orbita-orbitar8: 195vmin;
+    --radio-orbita-orbitar8: 198vmin;
     --diametro-orbita-neptuno: calc(var(--radio-orbita-orbitar8) * 2 );
     height: var(--diametro-orbita-neptuno); 
     width: var(--diametro-orbita-neptuno); 
