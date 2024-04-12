@@ -1,4 +1,7 @@
 /*https://www.color-hex.com/color-palette/35551*/
+/*https://mycolor.space/gradient3?ori=to+right+top&hex=%23216AE3&hex2=%2331C8CF&hex3=%2373AC10&submit=submit*/
+
+
 
 *{
     margin: 0;
@@ -7,24 +10,33 @@
 
 body{
     background-color: black;
-    height: 100vh;
+    height: 100vmin;
     overflow: hidden;
+
+    --viewport: 100vmin;
 }
 
+
+
 .sol{
-    height: 100vh; 
-    width: 50vw;
+    --diametro-sol:100vmin;
+    height: var(--diametro-sol); 
+    width: var(--diametro-sol);
     border-radius: 50%;
     background-color: orange;
-    margin-left: -25%;
+    margin-left: calc(var(--diametro-sol) / -2);
 
     animation: brillar 2.5s alternate infinite;  
 }
 
+
+
 @keyframes brillar{
-    from{border: 20px solid rgb(255, 255, 0, 0.5);}
-    to{border: 40px solid rgb(255, 0, 0,0.5);}
+    from{border: 20px solid rgba(255, 238, 0, 0.5);}
+    to{border: 4vmin solid rgb(255, 0, 0,0.5);}
 }
+
+
 
 .mercurio, .venus, .tierra, .marte, .jupiter, .saturno, .urano, .neptuno, .pluton{
     display: flex;
@@ -32,124 +44,272 @@ body{
     justify-content: center;   
     border-radius: 50%; 
     position: absolute;
-    top:50%;
 }
 
+
 .mercurio{
-    height: 5vh;
-    width: 2.5vw;
+    --diametro-mercurio: 5vmin;
+    height: var(--diametro-mercurio);
+    width: var(--diametro-mercurio);
+    left:calc(var(--diametro-mercurio) / -2 );
+    top: calc(50% - var(--diametro-mercurio) / 2);
     background-image: linear-gradient(to right, #e7e8ec, #dddce0, #d4d1d4, #c9c6c8, #bfbbbc, #b4b0b1, #aaa6a7, #9f9b9c, #928e90, #848184, #767579, #68696d);;
     animation:orbitar1 4s linear infinite;
 }
 
 @keyframes orbitar1 {
-    from{transform:rotate(0deg)translateX(30vw) rotate(0deg);}
-    to{transform:rotate(360deg)translateX(30vw) rotate(-360deg)}   
+    from{transform:rotate(0deg)translateX(70vmin)}
+    to{transform:rotate(360deg)translateX(70vmin)}   
+}
+
+.orbita-mercurio{
+    --radio-orbita-orbitar1: 70vmin;
+    --diametro-orbita-mercurio: calc(var(--radio-orbita-orbitar1) * 2 );
+    height: var(--diametro-orbita-mercurio); 
+    width: var(--diametro-orbita-mercurio); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-mercurio) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-mercurio) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
 }
 
 .venus{
-    height: 10vh;
-    width: 5vw;
+    --diametro-venus: 10vmin;
+    height: var(--diametro-venus);
+    width: var(--diametro-venus);
+    left:calc(var(--diametro-venus) / -2 );
+    top: calc(50% - var(--diametro-venus) / 2);
     background-image: linear-gradient(to right, #f8e2b0, #f4dba5, #f0d49a, #eccc8f, #e8c584, #e2be7c, #dbb675, #d5af6d, #cba667, #c19e60, #b7955a, #ad8d54);
     animation:orbitar2 6s linear infinite;
 }
 
 @keyframes orbitar2 {
-    from{transform:rotate(0deg)translateX(33vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(33vw) rotate(-360deg)}   
+    from{transform:rotate(0deg)translateX(85vmin)}
+    to{transform:rotate(360deg)translateX(85vmin)}   
 }
 
+.orbita-venus{
+    --radio-orbita-orbitar2: 85vmin;
+    --diametro-orbita-venus: calc(var(--radio-orbita-orbitar2) * 2 );
+    height: var(--diametro-orbita-venus); 
+    width: var(--diametro-orbita-venus); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-venus) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-venus) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+
+
 .tierra{
-    height: 10vh;
-    width: 5vw;
-    background-color: gray;
+    --diametro-tierra: 10vmin;
+    height: var(--diametro-tierra);
+    width: var(--diametro-tierra);
+    left:calc(var(--diametro-tierra) / -2 );
+    top: calc(50% - var(--diametro-tierra) / 2);
+    background-image: linear-gradient(to right top, #216ae3, #0081ea, #0095ea, #00a7e5, #00b6dd, #00bcd3, #00c1c4, #00c5b1, #08c193, #35bc70, #56b548, #73ac10);    
     animation:orbitar3 8s linear infinite;
 }
 
 @keyframes orbitar3 {
-    from{transform:rotate(0deg)translateX(38.5vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(38.5vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(100vmin)}
+    to{transform:rotate(360deg)translateX(100vmin)}
     
 }
 
+.orbita-tierra{
+    --radio-orbita-orbitar3: 100vmin;
+    --diametro-orbita-tierra: calc(var(--radio-orbita-orbitar3) * 2 );
+    height: var(--diametro-orbita-tierra); 
+    width: var(--diametro-orbita-tierra); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-tierra) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-tierra) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+
+
 .marte{
-    height: 6vh;
-    width: 3vw;
+    --diametro-marte: 6vmin;
+    height: var(--diametro-marte);
+    width: var(--diametro-marte);
+    left:calc(var(--diametro-marte) / -2 );
+    top: calc(50% - var(--diametro-marte) / 2);
     background-image: linear-gradient(to right top, #451804, #5a2009, #71280c, #88300d, #a0380e, #b1440e, #c1500d, #d25c0a, #de6e06, #e98102, #f49300, #fda600);
     animation:orbitar4 10s linear infinite;
 }
 
 @keyframes orbitar4 {
-    from{transform:rotate(0deg)translateX(44vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(44vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(115vmin)}
+    to{transform:rotate(360deg)translateX(115vmin)}
     
 }
 
+.orbita-marte{
+    --radio-orbita-orbitar4: 115vmin;
+    --diametro-orbita-marte: calc(var(--radio-orbita-orbitar4) * 2 );
+    height: var(--diametro-orbita-marte); 
+    width: var(--diametro-orbita-marte); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-marte) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-marte) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+
+
 .jupiter{
-    height: 20vh;
-    width: 10vw;
+     --diametro-jupiter: 20vmin;
+    height: var(--diametro-jupiter);
+    width: var(--diametro-jupiter);
+    left:calc(var(--diametro-jupiter) / -2 );
+    top: calc(50% - var(--diametro-jupiter) / 2);
     background-image: linear-gradient(to bottom, #f8e2b0, #f4dba5, #f0d49a, #eccc8f, #e8c584, #e2be7c, #dbb675, #d5af6d, #cba667, #c19e60, #b7955a, #ad8d54);
     animation:orbitar5 12s linear infinite;
 }
 
 @keyframes orbitar5 {
-    from{transform:rotate(0deg)translateX(47.5vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(47.5vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(130vmin)  rotate(0deg);}
+    to{transform:rotate(360deg)translateX(130vmin) rotate(-360deg)}
     
 }
 
+.orbita-jupiter{
+    --radio-orbita-orbitar5: 130vmin;
+    --diametro-orbita-jupiter: calc(var(--radio-orbita-orbitar5) * 2 );
+    height: var(--diametro-orbita-jupiter); 
+    width: var(--diametro-orbita-jupiter); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-jupiter) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-jupiter) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+/*
+.anillo{
+    position: absolute;
+    width: 28vmin;
+    height: 28vmin;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 5vmin #805711;
+
+}
+*/
 .saturno{
-    height: 25vh;
-    width: 12.5vw;
+    --diametro-saturno: 25vmin;
+    height: var(--diametro-saturno);
+    width: var(--diametro-saturno);
+    left:calc(var(--diametro-saturno) / -2 );
+    top: calc(50% - var(--diametro-saturno) / 2);
     background-image: linear-gradient(to bottom, #e2bf7d, #dcb674, #d6ae6b, #d1a563, #cb9d5a, #cda15d, #cfa561, #d1a964, #dcba75, #e6cb87, #f1dd9a, #fceead);
-    animation:orbitar6 14s linear infinite;
+
+    animation: orbitar6 14s linear infinite;
 }
 
 
 @keyframes orbitar6 {
-    from{transform:rotate(0deg)translateX(58vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(58vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(160vmin)}
+    to{transform:rotate(360deg)translateX(160vmin)}
     
 }
 
+.orbita-saturno{
+    --radio-orbita-orbitar6: 160vmin;
+    --diametro-orbita-saturno: calc(var(--radio-orbita-orbitar6) * 2 );
+    height: var(--diametro-orbita-saturno); 
+    width: var(--diametro-orbita-saturno); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-saturno) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-saturno) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+
 .urano{
-    height: 15vh;
-    width: 7.5vw;
+    --diametro-urano: 15vmin;
+    height: var(--diametro-urano);
+    width: var(--diametro-urano);
+    left:calc(var(--diametro-urano) / -2 );
+    top: calc(50% - var(--diametro-urano) / 2);
     background-image: linear-gradient(to right top, #afdbf5, #a0d3f2, #92caef, #83c2ed, #75b9ea, #6ab2e7, #60aae4, #55a3e1, #4b9bdc, #4293d8, #388cd3, #2e84ce);
     animation:orbitar7 16s linear infinite;
 }
 
 @keyframes orbitar7 {
-    from{transform:rotate(0deg)translateX(71vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(71vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(185vmin)}
+    to{transform:rotate(360deg)translateX(185vmin)}
     
 }
 
+.orbita-urano{
+    --radio-orbita-orbitar7: 185vmin;
+    --diametro-orbita-urano: calc(var(--radio-orbita-orbitar7) * 2 );
+    height: var(--diametro-orbita-urano); 
+    width: var(--diametro-orbita-urano); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-urano) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-urano) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
+
 .neptuno{
-    height: 12vh;
-    width: 6vw;
+    --diametro-neptuno: 12vmin;
+    height: var(--diametro-neptuno);
+    width: var(--diametro-neptuno);
+    left:calc(var(--diametro-neptuno) / -2 );
+    top: calc(50% - var(--diametro-neptuno) / 2);
     background-image: linear-gradient(to right top, #477efd, #1d92ff, #00a5ff, #18b5ff, #45c4ff, #47bdf7, #48b5ee, #49aee6, #3090d3, #2373be, #2455a6, #2b378b);
     animation:orbitar8 18s linear infinite;
 }
 
 @keyframes orbitar8 {
-    from{transform:rotate(0deg)translateX(79vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(79vw) rotate(-360deg)}
-    
+    from{transform:rotate(0deg)translateX(200vmin)}
+    to{transform:rotate(360deg)translateX(200vmin)}   
+}
+
+.orbita-neptuno{
+    --radio-orbita-orbitar8: 200vmin;
+    --diametro-orbita-neptuno: calc(var(--radio-orbita-orbitar8) * 2 );
+    height: var(--diametro-orbita-neptuno); 
+    width: var(--diametro-orbita-neptuno); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-neptuno) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-neptuno) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
 }
 
 .pluton{
-    height: 3vh;
-    width: 1.5vw;
+    --diametro-pluton: 3vmin;
+    height: var(--diametro-pluton);
+    width: var(--diametro-pluton);
+    left:calc(var(--diametro-pluton) / -2 );
+    top: calc(50% - var(--diametro-pluton) / 2);
     background-image: linear-gradient(to right top, #968570, #a7957e, #b9a58c, #cbb59a, #ddc6a9, #e2cbad, #e6cfb0, #ebd4b4, #e3cdad, #dbc7a6, #d4c0a0, #ccba99);    border-radius: 50%;
     animation:orbitar9 20s linear infinite;
 }
 
 @keyframes orbitar9 {
-    from{transform:rotate(0deg)translateX(85.5vw)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(85.5vw) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(215vmin)}
+    to{transform:rotate(360deg)translateX(215vmin)}
     
 }
 
-
+.orbita-pluton{
+    --radio-orbita-orbitar9: 215vmin;
+    --diametro-orbita-pluton: calc(var(--radio-orbita-orbitar9) * 2 );
+    height: var(--diametro-orbita-pluton); 
+    width: var(--diametro-orbita-pluton); 
+    position:absolute;
+    top: calc((var(--diametro-orbita-pluton) - var(--viewport)) / -2);
+    left: calc(var(--diametro-orbita-pluton) / -2);
+    border-radius: 50%;
+    border: solid 1px white;
+}
 

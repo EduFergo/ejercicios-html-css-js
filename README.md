@@ -1,2 +1,2 @@
 # ejercicios-html-css-js
-Ejercicios de respaso - Bootacamp Imatia
+Ejercicios de repaso - Bootacamp Imatia
