@@ -1,4 +1,4 @@
-const now = document.querySelector(`.now`);
+const now = document.getElementById(`contenido`);
 
 function setTime(){
     const date_now = new Date();
