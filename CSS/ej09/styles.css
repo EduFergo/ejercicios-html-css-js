@@ -26,26 +26,21 @@ body{
     background-color: orange;
     margin-left: calc(var(--diametro-sol) / -2);
 
-    animation: brillar 2.5s alternate infinite;  
+    animation: brillar 4s alternate infinite;  
 }
 
-
-
 @keyframes brillar{
-    from{border: 20px solid rgba(255, 238, 0, 0.5);}
+    from{border: 0px solid rgba(255, 238, 0, 0.5);}
     to{border: 4vmin solid rgb(255, 0, 0,0.5);}
 }
 
-
-
-.mercurio, .venus, .tierra, .marte, .jupiter, .saturno, .urano, .neptuno, .pluton{
+.mercurio, .venus, .tierra, .marte, .jupiter, .anillo, .saturno, .saturno-mascara, .urano, .neptuno, .pluton{
     display: flex;
     align-items: center;
     justify-content: center;   
     border-radius: 50%; 
     position: absolute;
 }
-
 
 .mercurio{
     --diametro-mercurio: 5vmin;
@@ -58,12 +53,12 @@ body{
 }
 
 @keyframes orbitar1 {
-    from{transform:rotate(0deg)translateX(70vmin)}
-    to{transform:rotate(360deg)translateX(70vmin)}   
+    from{transform:rotate(0deg)translateX(65vmin)}
+    to{transform:rotate(360deg)translateX(65vmin)}   
 }
 
 .orbita-mercurio{
-    --radio-orbita-orbitar1: 70vmin;
+    --radio-orbita-orbitar1: 65vmin;
     --diametro-orbita-mercurio: calc(var(--radio-orbita-orbitar1) * 2 );
     height: var(--diametro-orbita-mercurio); 
     width: var(--diametro-orbita-mercurio); 
@@ -85,12 +80,12 @@ body{
 }
 
 @keyframes orbitar2 {
-    from{transform:rotate(0deg)translateX(85vmin)}
-    to{transform:rotate(360deg)translateX(85vmin)}   
+    from{transform:rotate(0deg)translateX(80vmin)}
+    to{transform:rotate(360deg)translateX(80vmin)}   
 }
 
 .orbita-venus{
-    --radio-orbita-orbitar2: 85vmin;
+    --radio-orbita-orbitar2: 80vmin;
     --diametro-orbita-venus: calc(var(--radio-orbita-orbitar2) * 2 );
     height: var(--diametro-orbita-venus); 
     width: var(--diametro-orbita-venus); 
@@ -113,13 +108,13 @@ body{
 }
 
 @keyframes orbitar3 {
-    from{transform:rotate(0deg)translateX(100vmin)}
-    to{transform:rotate(360deg)translateX(100vmin)}
+    from{transform:rotate(0deg)translateX(95vmin)}
+    to{transform:rotate(360deg)translateX(95vmin)}
     
 }
 
 .orbita-tierra{
-    --radio-orbita-orbitar3: 100vmin;
+    --radio-orbita-orbitar3: 95vmin;
     --diametro-orbita-tierra: calc(var(--radio-orbita-orbitar3) * 2 );
     height: var(--diametro-orbita-tierra); 
     width: var(--diametro-orbita-tierra); 
@@ -142,13 +137,13 @@ body{
 }
 
 @keyframes orbitar4 {
-    from{transform:rotate(0deg)translateX(115vmin)}
-    to{transform:rotate(360deg)translateX(115vmin)}
+    from{transform:rotate(0deg)translateX(110vmin)}
+    to{transform:rotate(360deg)translateX(110vmin)}
     
 }
 
 .orbita-marte{
-    --radio-orbita-orbitar4: 115vmin;
+    --radio-orbita-orbitar4: 110vmin;
     --diametro-orbita-marte: calc(var(--radio-orbita-orbitar4) * 2 );
     height: var(--diametro-orbita-marte); 
     width: var(--diametro-orbita-marte); 
@@ -161,7 +156,7 @@ body{
 
 
 .jupiter{
-     --diametro-jupiter: 20vmin;
+    --diametro-jupiter: 20vmin;
     height: var(--diametro-jupiter);
     width: var(--diametro-jupiter);
     left:calc(var(--diametro-jupiter) / -2 );
@@ -171,13 +166,13 @@ body{
 }
 
 @keyframes orbitar5 {
-    from{transform:rotate(0deg)translateX(130vmin)  rotate(0deg);}
-    to{transform:rotate(360deg)translateX(130vmin) rotate(-360deg)}
+    from{transform:rotate(0deg)translateX(125vmin)  rotate(0deg);}
+    to{transform:rotate(360deg)translateX(125vmin) rotate(-360deg)}
     
 }
 
 .orbita-jupiter{
-    --radio-orbita-orbitar5: 130vmin;
+    --radio-orbita-orbitar5: 125vmin;
     --diametro-orbita-jupiter: calc(var(--radio-orbita-orbitar5) * 2 );
     height: var(--diametro-orbita-jupiter); 
     width: var(--diametro-orbita-jupiter); 
@@ -187,39 +182,46 @@ body{
     border-radius: 50%;
     border: solid 1px white;
 }
-/*
-.anillo{
-    position: absolute;
-    width: 28vmin;
-    height: 28vmin;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: solid 5vmin #805711;
 
+.anillo{
+    --diametro-anillo: 28vmin;
+    width: var(--diametro-anillo);
+    height: var(--diametro-anillo);
+    border: solid 50px #8D8274;
+    transform: rotate3d(1,0,0,70deg);
+    transform-style: preserve-3d;
+   
 }
-*/
+
 .saturno{
     --diametro-saturno: 25vmin;
     height: var(--diametro-saturno);
-    width: var(--diametro-saturno);
-    left:calc(var(--diametro-saturno) / -2 );
-    top: calc(50% - var(--diametro-saturno) / 2);
+    width: var(--diametro-saturno);   
+    left:calc((var(--diametro-saturno)) / -2 );
+    top: calc(50% - (var(--diametro-saturno)) / 2);
     background-image: linear-gradient(to bottom, #e2bf7d, #dcb674, #d6ae6b, #d1a563, #cb9d5a, #cda15d, #cfa561, #d1a964, #dcba75, #e6cb87, #f1dd9a, #fceead);
-
+    transform: rotate3d(-1, 0, 0, 60deg);
     animation: orbitar6 14s linear infinite;
+
 }
 
+.saturno-mascara {
+    align-self: flex-start;
+    --diametro-saturno: 25vmin;
+    height: calc(var(--diametro-saturno) / 2);
+    width: var(--diametro-saturno); 
+    border-radius:125px 125px 0 0;
+    background-image: linear-gradient(to bottom, #e2bf7d, #dcb674, #d6ae6b, #d1a563);
+  }
 
 @keyframes orbitar6 {
-    from{transform:rotate(0deg)translateX(160vmin)}
-    to{transform:rotate(360deg)translateX(160vmin)}
+    from{transform:rotate(0deg)translateX(155vmin)}
+    to{transform:rotate(360deg)translateX(155vmin)}
     
 }
 
 .orbita-saturno{
-    --radio-orbita-orbitar6: 160vmin;
+    --radio-orbita-orbitar6: 155vmin;
     --diametro-orbita-saturno: calc(var(--radio-orbita-orbitar6) * 2 );
     height: var(--diametro-orbita-saturno); 
     width: var(--diametro-orbita-saturno); 
@@ -241,13 +243,13 @@ body{
 }
 
 @keyframes orbitar7 {
-    from{transform:rotate(0deg)translateX(185vmin)}
-    to{transform:rotate(360deg)translateX(185vmin)}
+    from{transform:rotate(0deg)translateX(180vmin)}
+    to{transform:rotate(360deg)translateX(180vmin)}
     
 }
 
 .orbita-urano{
-    --radio-orbita-orbitar7: 185vmin;
+    --radio-orbita-orbitar7: 180vmin;
     --diametro-orbita-urano: calc(var(--radio-orbita-orbitar7) * 2 );
     height: var(--diametro-orbita-urano); 
     width: var(--diametro-orbita-urano); 
@@ -269,12 +271,12 @@ body{
 }
 
 @keyframes orbitar8 {
-    from{transform:rotate(0deg)translateX(200vmin)}
-    to{transform:rotate(360deg)translateX(200vmin)}   
+    from{transform:rotate(0deg)translateX(195vmin)}
+    to{transform:rotate(360deg)translateX(195vmin)}   
 }
 
 .orbita-neptuno{
-    --radio-orbita-orbitar8: 200vmin;
+    --radio-orbita-orbitar8: 195vmin;
     --diametro-orbita-neptuno: calc(var(--radio-orbita-orbitar8) * 2 );
     height: var(--diametro-orbita-neptuno); 
     width: var(--diametro-orbita-neptuno); 
@@ -296,13 +298,13 @@ body{
 }
 
 @keyframes orbitar9 {
-    from{transform:rotate(0deg)translateX(215vmin)}
-    to{transform:rotate(360deg)translateX(215vmin)}
+    from{transform:rotate(0deg)translateX(210vmin)}
+    to{transform:rotate(360deg)translateX(210vmin)}
     
 }
 
 .orbita-pluton{
-    --radio-orbita-orbitar9: 215vmin;
+    --radio-orbita-orbitar9: 210vmin;
     --diametro-orbita-pluton: calc(var(--radio-orbita-orbitar9) * 2 );
     height: var(--diametro-orbita-pluton); 
     width: var(--diametro-orbita-pluton); 
