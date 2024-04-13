@@ -241,6 +241,12 @@ function blink(){
 
 function play_timer(){
     stop_timer();
+    const hours_value = parseInt(input_hours.value);
+    const minutes_value = parseInt(input_minutes.value);
+    const seconds_value = parseInt(input_seconds.value);
+    hours = hours_value;
+    minutes = minutes_value;
+    seconds = seconds_value;
     interval_timer = setInterval(counter, 1000);
 }
 
