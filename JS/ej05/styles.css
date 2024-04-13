@@ -42,7 +42,23 @@ body{
     color: rgb(0, 233, 31);
     font-size: 10vh;
     margin-top: 5vh;
+}
 
+.timer{
+    background-color: black;
+    height: 25vh;
+    width: 60vh;
+    border-radius: 0.5vh;
+    color: rgb(0, 233, 31);
+    font-size: 10vh;
+    margin-top: 5vh;
+    font-family: Orbitron;  
+    text-align: center;
+}
+
+input{
+    color: rgb(0, 233, 31);
+    font-size: 10vh;  
 }
 
 .up{
