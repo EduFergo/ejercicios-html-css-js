@@ -112,3 +112,10 @@ input{
     font-size: 3vh;
 }
 
+.switch{
+    background-color: red;
+    height: 4vh;
+    font-family: Orbitron;
+    font-weight: 900;
+}
+

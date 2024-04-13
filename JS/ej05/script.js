@@ -13,11 +13,67 @@ const play_btn = document.querySelector(`.play`);
 const stop_btn = document.querySelector(`.stop`);
 const refresh_btn = document.querySelector(`.refresh`);
 
-let hours = 0;
-let minutes = 0;
-let seconds = 0;
+const switch_btn = document.querySelector(`.switch`);
 
-let interval;
+let hours=0;
+let minutes=0;
+let seconds=0;
+
+let interval_timer;
+let interval_time
+let alarmMode = false;
+
+updateTime();
+
+switch_btn.addEventListener('click', changeMode);
+
+
+function changeMode(){
+    if(!alarmMode){  
+        alarmMode=true; 
+        clearInterval(interval_time);
+        updateTimer(); 
+        hoursUp.addEventListener('click', addHour);
+        hoursDown.addEventListener("click", subsHour);
+        minutesUp.addEventListener('click', addMinute);
+        minutesDown.addEventListener("click", subsMinute);
+        secondsUp.addEventListener('click', addSecond);
+        secondsDown.addEventListener("click", subsSecond);
+        play_btn.addEventListener('click', play);
+        stop_btn.addEventListener('click', stop);
+        refresh_btn.addEventListener('click', refresh);
+    } else{
+        alarmMode=false;
+        clearInterval(interval_timer);
+        updateTime();
+        hoursUp.removeEventListener('click', addHour);
+        hoursDown.removeEventListener("click", subsHour);
+        minutesUp.removeEventListener('click', addMinute);
+        minutesDown.removeEventListener("click", subsMinute);
+        secondsUp.removeEventListener('click', addSecond);
+        secondsDown.removeEventListener("click", subsSecond);
+        play_btn.removeEventListener('click', play);
+        stop_btn.removeEventListener('click', stop);
+        refresh_btn.removeEventListener('click', refresh);
+    }    
+}
+
+
+
+function updateTime(){
+   interval_time = setInterval(setTime, 1000);
+}
+
+function setTime(){
+    const date_now = new Date();
+    const hours_now = date_now.getHours();
+    const minutes_now = date_now.getMinutes();
+    const seconds_now =  date_now.getSeconds();
+
+    const time = `${String(hours_now).padStart(2,'0')}:${String(minutes_now).padStart(2,'0')}:${String(seconds_now).padStart(2,'0')}`
+
+    timer.value = time;
+}
 
 function updateTimer(){
     timer.value = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`
@@ -41,8 +97,7 @@ function subsHour(){
     updateTimer();
 }
 
-hoursUp.addEventListener('click', addHour);
-hoursDown.addEventListener("click", subsHour);
+
 
 function addMinute(){
     if(minutes==59){
@@ -62,8 +117,7 @@ function subsMinute(){
     updateTimer();
 }
 
-minutesUp.addEventListener('click', addMinute);
-minutesDown.addEventListener("click", subsMinute);
+
 
 function addSecond(){
     if(seconds==59){
@@ -83,8 +137,7 @@ function subsSecond(){
     updateTimer();
 }
 
-secondsUp.addEventListener('click', addSecond);
-secondsDown.addEventListener("click", subsSecond);
+
 
 function counter(){
     if(hours==0 && minutes==0 && seconds==0){
@@ -105,16 +158,16 @@ function counter(){
 }
 
 function play(){
-   interval = setInterval(counter, 1000);
+   interval_timer = setInterval(counter, 1000);
 }
 
-play_btn.addEventListener('click', play);
+
 
 function stop(){
     clearInterval(interval);
 }
 
-stop_btn.addEventListener('click', stop);
+
 
 function refresh(){
     seconds=0;
@@ -124,5 +177,5 @@ function refresh(){
     updateTimer();
 }
 
-refresh_btn.addEventListener('click', refresh);
+
 
