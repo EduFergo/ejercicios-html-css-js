@@ -14,6 +14,8 @@ const refresh_btn = document.querySelector(`.refresh`);
 
 const switch_btn = document.querySelector(`.switch`);
 
+const all_buttons = document.querySelectorAll(`button`);
+
 let hours=0;
 let minutes=0;
 let seconds=0;
@@ -144,20 +146,16 @@ function subsSecond(){
 
 function counter(){
     if(seconds==0 && minutes==0 && hours == 0){
-        timer.value= "ALARM!!";
-        stop();
-        if(!alarm_mode){
-            changeMode(alarm_mode);
-        }           
+        alarm();
     } else {
         if(seconds==0 && minutes==0 && hours > 0){
             hours--;
             minutes=59;
             seconds=59;
-        } else if(minutes>0 && seconds==0) {
+        }else if(minutes>0 && seconds==0) {
             minutes--;
             seconds=59;
-        } else{
+        }else{
             seconds--;
         }
 
@@ -167,6 +165,33 @@ function counter(){
     }
 }
 
+function alarm(){
+    stop();
+    timer.value= "ALARM!!";
+    let red = true;
+    timer.style.color="red";
+    function blink(){
+        if(!red){
+            timer.style.color="black";
+        }else{
+            timer.style.color="red";
+        } 
+        red = !red;   
+    }
+
+    let intervalBlink = setInterval(blink, 250);
+
+    if(!alarm_mode){
+        changeMode(alarm_mode);
+    }  
+    
+    all_buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            clearInterval(intervalBlink);
+            timer.style.color = "rgb(0, 233, 31)";
+        });
+    });
+}
 
 
 function play(){
