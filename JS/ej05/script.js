@@ -247,7 +247,9 @@ function play_timer(){
     hours = hours_value;
     minutes = minutes_value;
     seconds = seconds_value;
-    interval_timer = setInterval(counter, 1000);
+    if(hours>0 || minutes>0 || seconds>0){
+        interval_timer = setInterval(counter, 1000);
+    }
 }
 
 function stop_timer(){
