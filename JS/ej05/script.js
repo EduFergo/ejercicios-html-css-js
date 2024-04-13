@@ -1,13 +1,13 @@
 const timer = document.querySelector(`.timer`);
 
-const hoursUp = document.querySelector(`.hours .up`);
-const hoursDown = document.querySelector(`.hours .down`);
+const hours_up = document.querySelector(`.hours .up`);
+const hours_down = document.querySelector(`.hours .down`);
 
-const minutesUp = document.querySelector(`.minutes .up`);
-const minutesDown = document.querySelector(`.minutes .down`);
+const minutes_up = document.querySelector(`.minutes .up`);
+const minutes_down = document.querySelector(`.minutes .down`);
 
-const secondsUp = document.querySelector(`.seconds .up`);
-const secondsDown = document.querySelector(`.seconds .down`);
+const seconds_up = document.querySelector(`.seconds .up`);
+const seconds_down = document.querySelector(`.seconds .down`);
 
 const play_btn = document.querySelector(`.play`);
 const stop_btn = document.querySelector(`.stop`);
@@ -21,7 +21,7 @@ let seconds=0;
 
 let interval_timer;
 let interval_time
-let alarmMode = false;
+let alarm_mode = false;
 
 updateTime();
 
@@ -29,36 +29,46 @@ switch_btn.addEventListener('click', changeMode);
 
 
 function changeMode(){
-    if(!alarmMode){  
-        alarmMode=true; 
+    if(!alarm_mode){  
+        alarm_mode=true; 
         clearInterval(interval_time);
         updateTimer(); 
-        hoursUp.addEventListener('click', addHour);
-        hoursDown.addEventListener("click", subsHour);
-        minutesUp.addEventListener('click', addMinute);
-        minutesDown.addEventListener("click", subsMinute);
-        secondsUp.addEventListener('click', addSecond);
-        secondsDown.addEventListener("click", subsSecond);
-        play_btn.addEventListener('click', play);
-        stop_btn.addEventListener('click', stop);
-        refresh_btn.addEventListener('click', refresh);
+        addAlarmListeners();
+        
     } else{
-        alarmMode=false;
+        alarm_mode=false;
         clearInterval(interval_timer);
         updateTime();
-        hoursUp.removeEventListener('click', addHour);
-        hoursDown.removeEventListener("click", subsHour);
-        minutesUp.removeEventListener('click', addMinute);
-        minutesDown.removeEventListener("click", subsMinute);
-        secondsUp.removeEventListener('click', addSecond);
-        secondsDown.removeEventListener("click", subsSecond);
-        play_btn.removeEventListener('click', play);
-        stop_btn.removeEventListener('click', stop);
-        refresh_btn.removeEventListener('click', refresh);
+        removeAlarmListeners();
+        
     }    
 }
 
+function addAlarmListeners(){
+    hours_up.addEventListener('click', addHour);
+    hours_down.addEventListener("click", subsHour);
+    minutes_up.addEventListener('click', addMinute);
+    minutes_down.addEventListener("click", subsMinute);
+    seconds_up.addEventListener('click', addSecond);
+    seconds_down.addEventListener("click", subsSecond);
+    play_btn.addEventListener('click', play);
+    stop_btn.addEventListener('click', stop);
+    refresh_btn.addEventListener('click', refresh);
 
+}
+
+function removeAlarmListeners(){
+    hours_up.removeEventListener('click', addHour);
+    hours_down.removeEventListener("click", subsHour);
+    minutes_up.removeEventListener('click', addMinute);
+    minutes_down.removeEventListener("click", subsMinute);
+    seconds_up.removeEventListener('click', addSecond);
+    seconds_down.removeEventListener("click", subsSecond);
+    play_btn.removeEventListener('click', play);
+    stop_btn.removeEventListener('click', stop);
+    refresh_btn.removeEventListener('click', refresh);
+
+}
 
 function updateTime(){
    interval_time = setInterval(setTime, 1000);
@@ -97,8 +107,6 @@ function subsHour(){
     updateTimer();
 }
 
-
-
 function addMinute(){
     if(minutes==59){
         minutes=0;       
@@ -117,8 +125,6 @@ function subsMinute(){
     updateTimer();
 }
 
-
-
 function addSecond(){
     if(seconds==59){
         seconds=0;       
@@ -136,8 +142,6 @@ function subsSecond(){
     }  
     updateTimer();
 }
-
-
 
 function counter(){
     if(hours==0 && minutes==0 && seconds==0){
@@ -161,13 +165,9 @@ function play(){
    interval_timer = setInterval(counter, 1000);
 }
 
-
-
 function stop(){
     clearInterval(interval);
 }
-
-
 
 function refresh(){
     seconds=0;
@@ -176,6 +176,3 @@ function refresh(){
     stop();
     updateTimer();
 }
-
-
-
