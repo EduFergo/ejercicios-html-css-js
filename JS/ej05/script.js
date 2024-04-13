@@ -11,15 +11,16 @@ const secondsDown = document.querySelector(`.seconds .down`);
 
 const play_btn = document.querySelector(`.play`);
 const stop_btn = document.querySelector(`.stop`);
-const refresh_btn = document.querySelector(`refresh`);
+const refresh_btn = document.querySelector(`.refresh`);
 
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
 
+let interval;
+
 function updateTimer(){
     timer.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`
-    console.log();
 }
 
 function addHour(){
@@ -84,4 +85,44 @@ function subsSecond(){
 
 secondsUp.addEventListener('click', addSecond);
 secondsDown.addEventListener("click", subsSecond);
+
+function counter(){
+    if(hours==0 && minutes==0 && seconds==0){
+        stop();
+    }
+    if(seconds==0 && minutes==0 && hours > 0){
+        hours--;
+        minutes=59;
+        seconds=59;
+    }else if(minutes>0 && seconds==0) {
+        minutes--;
+        seconds=59;
+    }else{
+        seconds--;
+    }
+    updateTimer();
+  
+}
+
+function play(){
+   interval = setInterval(counter, 1000);
+}
+
+play_btn.addEventListener('click', play);
+
+function stop(){
+    clearInterval(interval);
+}
+
+stop_btn.addEventListener('click', stop);
+
+function refresh(){
+    seconds=0;
+    minutes=0;
+    hours=0;
+    stop();
+    updateTimer();
+}
+
+refresh_btn.addEventListener('click', refresh);
 
