@@ -91,11 +91,8 @@ body{
     background-color: rgb(201, 198, 198);
 }
 
-.refresh-icon{
-
-}
-
-.reload{
+.reload-icon{
     color: rgb(201, 198, 198);
     font-size: 3vh;
 }
+
