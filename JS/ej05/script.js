@@ -1,5 +1,4 @@
 const timer = document.querySelector(`.timer`);
-
 const hours_up = document.querySelector(`.hours .up`);
 const hours_down = document.querySelector(`.hours .down`);
 
@@ -23,24 +22,24 @@ let interval_timer;
 let interval_time
 let alarm_mode = false;
 
-updateTime();
+clock();
 
-switch_btn.addEventListener('click', changeMode);
-
+function clock(){
+    updateTime();
+    timer.disabled = true;
+    switch_btn.addEventListener('click', changeMode);
+}
 
 function changeMode(){
     if(!alarm_mode){  
         alarm_mode=true; 
         clearInterval(interval_time);
         updateTimer(); 
-        addAlarmListeners();
-        
+        addAlarmListeners();       
     } else{
         alarm_mode=false;
-        clearInterval(interval_timer);
         updateTime();
-        removeAlarmListeners();
-        
+        removeAlarmListeners();              
     }    
 }
 
@@ -54,7 +53,7 @@ function addAlarmListeners(){
     play_btn.addEventListener('click', play);
     stop_btn.addEventListener('click', stop);
     refresh_btn.addEventListener('click', refresh);
-
+    timer.disabled = false;
 }
 
 function removeAlarmListeners(){
@@ -67,7 +66,7 @@ function removeAlarmListeners(){
     play_btn.removeEventListener('click', play);
     stop_btn.removeEventListener('click', stop);
     refresh_btn.removeEventListener('click', refresh);
-
+    timer.disabled = true;
 }
 
 function updateTime(){
@@ -86,7 +85,7 @@ function setTime(){
 }
 
 function updateTimer(){
-    timer.value = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`
+    timer.value = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`   
 }
 
 function addHour(){
@@ -157,16 +156,20 @@ function counter(){
     }else{
         seconds--;
     }
-    updateTimer();
+
+    if(alarm_mode){
+        updateTimer();
+    }
   
 }
 
 function play(){
-   interval_timer = setInterval(counter, 1000);
+    stop();
+    interval_timer = setInterval(counter, 1000);
 }
 
 function stop(){
-    clearInterval(interval);
+    clearInterval(interval_timer);
 }
 
 function refresh(){
