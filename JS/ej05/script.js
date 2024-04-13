@@ -143,25 +143,31 @@ function subsSecond(){
 }
 
 function counter(){
-    if(hours==0 && minutes==0 && seconds==0){
+    if(seconds==0 && minutes==0 && hours == 0){
+        timer.value= "ALARM!!";
         stop();
-    }
-    if(seconds==0 && minutes==0 && hours > 0){
-        hours--;
-        minutes=59;
-        seconds=59;
-    }else if(minutes>0 && seconds==0) {
-        minutes--;
-        seconds=59;
-    }else{
-        seconds--;
-    }
+        if(!alarm_mode){
+            changeMode(alarm_mode);
+        }           
+    } else {
+        if(seconds==0 && minutes==0 && hours > 0){
+            hours--;
+            minutes=59;
+            seconds=59;
+        } else if(minutes>0 && seconds==0) {
+            minutes--;
+            seconds=59;
+        } else{
+            seconds--;
+        }
 
-    if(alarm_mode){
-        updateTimer();
+        if(alarm_mode){
+            updateTimer();
+        }
     }
-  
 }
+
+
 
 function play(){
     stop();
