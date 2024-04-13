@@ -20,7 +20,7 @@ let seconds = 0;
 let interval;
 
 function updateTimer(){
-    timer.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`
+    timer.value = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`
 }
 
 function addHour(){
