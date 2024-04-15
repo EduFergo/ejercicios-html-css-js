@@ -24,7 +24,5 @@ function add_img(){
 }
 
 function dlt_img(){
-    if(img_container.children.length<5){
-        img_container.removeChild
-    }
+    img_container.removeChild(img_container.lastElementChild);   
 }
