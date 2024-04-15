@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(./img/background.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns:1fr 2fr;
+    justify-content: center;
+    align-items: start;
+    
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 127vmin;
+   
+}
+
+.btn-container{
+    margin-top: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+
+img{
+    height: 48vmin ;
+    width: 32vmin;
+}
+
+button{
+    height: 5vmin;
+    width: 10vmin;
+}
+
+
+input{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    font-size: 4vh;
+    border: none;
+    border-radius: 50%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
