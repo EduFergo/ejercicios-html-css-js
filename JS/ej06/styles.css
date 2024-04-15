@@ -25,6 +25,7 @@ body{
 .btn-container{
     margin-top: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1vh;
@@ -54,5 +55,15 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    }
+}
+
+.warning{
+    display: flex;
+    align-items: center;
+    height: 5vmin;
+    padding: 1vmin;
+    background-color: black;
+    color:red;
+    border: 1px solid red;
+}
 
