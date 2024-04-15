@@ -1,7 +1,8 @@
 const add_btn = document.getElementById("add");
 const dlt_btn = document.getElementById("delete");
 const input = document.getElementById("input");
-
+const btns = document.getElementById("buttons");
+const btns_cnt = document.getElementById("btn-container");
 const img_container = document.querySelector(".img-container");
 
 const img_src = [
@@ -17,30 +18,47 @@ dlt_btn.addEventListener("click", dlt_img);
 
 
 function add_img(){
-
+    remove_warning();
     const container_length = img_container.children.length;
-    add_case(container_length);   
-    /*
-    if(void_position){
-        const img = document.createElement("img");
-        img.classList.add("p"+(void_position));
-        img.src = img_src[void_position-1];
-        img_container.appendChild(img)
-    }
-    if(img_container.children.length<5){
-        const img = document.createElement("img");
-        img.classList.add("p"+(img_container.children.length+1));
-        img.src = img_src[img_container.children.length];
-        img_container.appendChild(img);
-    }
-    */
+    add_case(container_length);     
 }
+
 function dlt_img(){
-    const position = input.value;
-    img_container.removeChild(img_container.children[position-1]);   
+    remove_warning();
+    const position = input.value-1;
+    const input_is_valid = check_input();
+    if(input_is_valid){
+        img_container.removeChild(img_container.children[position]); 
+    }else{
+        warning();
+    }     
 }
 
+function remove_warning() {
+    const warning_rm = document.querySelector(".warning");
+    if (warning_rm) {
+        warning_rm.remove();
+    }
+}
 
+function warning(){
+    const warning = document.createElement("div");
+    warning.classList.add("warning");
+    warning.textContent = "No se puede exceder el número de cartas";
+
+    btns_cnt.insertBefore(warning , btns);
+
+}
+
+function check_input(){
+    const input_value = input.value;
+    if(input_value<0 || input_value > img_container.children.length){
+        return false;
+    } else{
+        return true;
+    }
+
+}
 function add_case(container_length){
     switch(container_length){
         case 0:
