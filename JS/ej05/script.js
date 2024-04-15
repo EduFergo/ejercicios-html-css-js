@@ -32,7 +32,7 @@ let alarm_mode = false;
 let red=true;
 
 let alarm_div = document.createElement("div");
-let intervalBlink;
+let interval_blink;
 
 app();
 
@@ -41,29 +41,29 @@ function app(){
     input_hours.disabled = true;
     input_minutes.disabled = true;
     input_seconds.disabled = true;
-    switch_btn.addEventListener('click', changeMode);
+    switch_btn.addEventListener('click', change_mode);
 }
 
-function changeMode(){
+function change_mode(){
     if(!alarm_mode){  
         alarm_mode=true; 
         clearInterval(interval_time);
         update_timer(); 
-        addAlarmListeners();       
+        add_alarm_listeners();       
     } else{
         alarm_mode=false;
         update_time();
-        removeAlarmListeners();              
+        remove_alarm_listeners();              
     }    
 }
 
-function addAlarmListeners(){
-    hours_up.addEventListener('click', addHour);
-    hours_down.addEventListener("click", subsHour);
-    minutes_up.addEventListener('click', addMinute);
-    minutes_down.addEventListener("click", subsMinute);
-    seconds_up.addEventListener('click', addSecond);
-    seconds_down.addEventListener("click", subsSecond);
+function add_alarm_listeners(){
+    hours_up.addEventListener('click', add_hour);
+    hours_down.addEventListener("click", subs_hour);
+    minutes_up.addEventListener('click', add_minute);
+    minutes_down.addEventListener("click", subs_minute);
+    seconds_up.addEventListener('click', add_second);
+    seconds_down.addEventListener("click", subs_second);
     play_btn.addEventListener('click', play_timer);
     stop_btn.addEventListener('click', stop_timer);
     refresh_btn.addEventListener('click', refresh_timer);
@@ -72,13 +72,13 @@ function addAlarmListeners(){
     input_seconds.disabled = false;
 }
 
-function removeAlarmListeners(){
-    hours_up.removeEventListener('click', addHour);
-    hours_down.removeEventListener("click", subsHour);
-    minutes_up.removeEventListener('click', addMinute);
-    minutes_down.removeEventListener("click", subsMinute);
-    seconds_up.removeEventListener('click', addSecond);
-    seconds_down.removeEventListener("click", subsSecond);
+function remove_alarm_listeners(){
+    hours_up.removeEventListener('click', add_hour);
+    hours_down.removeEventListener("click", subs_hour);
+    minutes_up.removeEventListener('click', add_minute);
+    minutes_down.removeEventListener("click", subs_minute);
+    seconds_up.removeEventListener('click', add_second);
+    seconds_down.removeEventListener("click", subs_second);
     play_btn.removeEventListener('click', play_timer);
     stop_btn.removeEventListener('click', stop_timer);
     refresh_btn.removeEventListener('click', refresh_timer);
@@ -88,10 +88,10 @@ function removeAlarmListeners(){
 }
 
 function update_time(){
-   interval_time = setInterval(setTime, 1000);
+   interval_time = setInterval(set_time, 1000);
 }
 
-function setTime(){
+function set_time(){
     const date_now = new Date();
     const hours_now = date_now.getHours();
     const minutes_now = date_now.getMinutes();
@@ -109,7 +109,7 @@ function update_timer(){
     console.log(input_hours.value)
 }
 
-function addHour(){
+function add_hour(){
     if(hours==99){
         hours=0;       
     }else{
@@ -118,7 +118,7 @@ function addHour(){
     update_timer();
 }
 
-function subsHour(){
+function subs_hour(){
     if(hours==0){
         hours=99;       
     }else{
@@ -127,7 +127,7 @@ function subsHour(){
     update_timer();
 }
 
-function addMinute(){
+function add_minute(){
     if(minutes==59){
         minutes=0;       
     }else{
@@ -136,7 +136,7 @@ function addMinute(){
     update_timer();
 }
 
-function subsMinute(){
+function subs_minute(){
     if(minutes==0){
         minutes=59;       
     }else{
@@ -145,7 +145,7 @@ function subsMinute(){
     update_timer();
 }
 
-function addSecond(){
+function add_second(){
     if(seconds==59){
         seconds=0;       
     }else{
@@ -154,7 +154,7 @@ function addSecond(){
     update_timer();
 }
 
-function subsSecond(){
+function subs_second(){
     if(seconds==0){
         seconds=59;       
     }else{
@@ -189,10 +189,10 @@ function alarm(){
     hide_timer();
     show_alarm_text(); 
 
-    intervalBlink = setInterval(blink, 250);
+    interval_blink = setInterval(blink, 250);
     all_buttons.forEach(button => {
         button.addEventListener('click', () => {
-            clearInterval(intervalBlink);
+            clearInterval(interval_blink);
             time_container.removeChild(alarm_div);
             reset_app();
             });
@@ -201,7 +201,7 @@ function alarm(){
 
 function set_alarm_mode(){
     if(!alarm_mode){
-        changeMode(alarm_mode);
+        change_mode(alarm_mode);
     }  
 }
 
@@ -212,7 +212,7 @@ function reset_app(){
     });
 
     if(!alarm_mode){
-        changeMode(alarm_mode);
+        change_mode(alarm_mode);
     }  
 }
 
