@@ -5,25 +5,19 @@ body{
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 100%;
-
+    height: 100vh;
     display: grid;
-    grid-template-columns:1fr 2fr;
-    justify-content: center;
-    align-items: start;
-    
+    grid-template-columns:1fr 2fr;   
 }
 
 .img-container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 127vmin;
-   
+    width: 127vmin;  
 }
 
 .btn-container{
-    margin-top: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +35,6 @@ button{
     width: 10vmin;
     font-size: 2.25vmin;
 }
-
 
 input{
     height: 8vmin;
@@ -67,4 +60,3 @@ input[type=number]::-webkit-outer-spin-button {
     color:red;
     border: 1px solid red;
 }
-
