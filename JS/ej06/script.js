@@ -5,33 +5,41 @@ const btns = document.getElementById("buttons");
 const btns_cnt = document.getElementById("btn-container");
 const img_container = document.querySelector(".img-container");
 
-const img_src = [
-    "./img/right-arm.jpg",
-    "./img/exodia.jpg",
-    "./img/left-arm.jpg",
-    "./img/right-leg.jpg",
-    "./img/left-leg.jpg"
+
+const position = input.value - 1;
+
+const img = [
+    { p: "0", src: "./img/right-arm.jpg" },
+    { p: "1", src: "./img/exodia.jpg" },
+    { p: "2", src: "./img/left-arm.jpg" },
+    { p: "3", src: "./img/right-leg.jpg" },
+    { p: "4", src: "./img/left-leg.jpg" }
 ];
+
 
 add_btn.addEventListener("click", add_img);
 dlt_btn.addEventListener("click", dlt_img);
 
 
-function add_img(){
+function add_img() {
     remove_warning();
-    const container_length = img_container.children.length;
-    add_case(container_length);     
+    let input_value = input.value;
+    let container_length = img_container.children.length;
+
+    if (input_value == "") {
+        input_value = 1;
+    }
+
+    let is_valid = check_input(input_value, container_length);
+
+    if (is_valid) {
+        add_calc(input_value);
+    } else {
+        add_warning();
+    }
 }
 
-function dlt_img(){
-    remove_warning();
-    const position = input.value-1;
-    const input_is_valid = check_input();
-    if(input_is_valid){
-        img_container.removeChild(img_container.children[position]); 
-    }else{
-        warning();
-    }     
+function dlt_img() {
 }
 
 function remove_warning() {
@@ -41,138 +49,53 @@ function remove_warning() {
     }
 }
 
-function warning(){
+function add_warning() {
     const warning = document.createElement("div");
     warning.classList.add("warning");
-    warning.textContent = "No se puede exceder el número de cartas";
+    warning.textContent = "No puede haber más de 5 cartas en el tablero";
 
-    btns_cnt.insertBefore(warning , btns);
+    btns_cnt.insertBefore(warning, btns);
 
 }
 
-function check_input(){
-    const input_value = input.value;
-    if(input_value<0 || input_value > img_container.children.length){
+function check_input(input_value, container_length) {
+    if (input_value > 5 - container_length) {
         return false;
-    } else{
+    } else {
         return true;
     }
-
 }
-function add_case(container_length){
-    switch(container_length){
-        case 0:
-            const img_0 = document.createElement("img");
-            img_0.classList.add("p1");
-            img_0.src = img_src[container_length];
-            img_container.appendChild(img_0);
 
-            break;
+function add_calc(input_value) {
 
-        case 1:  
-            const img_1_prev = img_container.children[0];
-            const img_1 = document.createElement("img")
+    for (let i = 0; i < input_value; i++) {
+        let update_container_lenght = img_container.children.length;
 
-            img_1_prev.classList.contains("p1") ? img_1.classList.add("p2") : img_1.classList.add("p1");
+        for (let j = 0; j <= update_container_lenght; j++) {
+            let child = img_container.children[j];
 
-            if(img_1.classList.contains("p2")){
-                img_1.src = img_src[1];
-                img_container.appendChild(img_1);
-
-            }else{
-                img_1.src = img_src[0];
-                img_container.insertBefore(img_1, img_1_prev);
-            }
-
-            break;
-
-            case 2:  
-            const img_2_0 = img_container.children[0];
-            const img_2_1 = img_container.children[1];
-            const img_case_2 = document.createElement("img")
-
-            if (img_2_0.classList.contains("p2") && img_2_1.classList.contains("p3")){
-                img_case_2.classList.add("p1");
-                img_case_2.src = img_src[0];
-                img_container.insertBefore(img_case_2, img_2_0);
-
-            } else if (img_2_0.classList.contains("p1") && img_2_1.classList.contains("p3")){
-                img_case_2.classList.add("p2");
-                img_case_2.src = img_src[1];
-                img_container.insertBefore(img_case_2, img_2_1)
+            if (!child) {
+                const img_add = document.createElement("img");
+                img_add.src = img[j].src;
+                img_add.classList.add("p" + img[j].p);
+                img_container.appendChild(img_add);
 
             } else {
-                img_case_2.classList.add("p3");
-                img_case_2.src = img_src[2];
-                img_container.appendChild(img_case_2)
-
+                let img_class = child.className;
+                let img_num = img_class.charAt(1);
+                let existing_img = img.find(item => item.p === img_num);
+                if (!existing_img) {
+                    const img_add = document.createElement("img");
+                    img_add.src = img[j].src;
+                    img_add.classList.add("p" + img[j].p);
+                    img_container.appendChild(img_add);
+                }
             }
-
-            break;   
-
-            case 3:  
-            const img_3_0 = img_container.children[0];
-            const img_3_1 = img_container.children[1];
-            const img_3_2 = img_container.children[2];
-            const img_case_3 = document.createElement("img")
-
-            if(img_3_0.classList.contains("p2") && img_3_1.classList.contains("p3") && img_3_2.classList.contains("p4")){
-                img_case_3.classList.add("p1");
-                img_case_3.src = img_src[0];
-                img_container.insertBefore(img_case_3, img_3_0);
-
-            } else if(img_3_0.classList.contains("p1") && img_3_1.classList.contains("p3") && img_3_2.classList.contains("p4")){
-                img_case_3.classList.add("p2");
-                img_case_3.src = img_src[1];
-                img_container.insertBefore(img_case_3, img_3_1);
-
-            } else if(img_3_0.classList.contains("p1") && img_3_1.classList.contains("p2") && img_3_2.classList.contains("p4")){
-                img_case_3.classList.add("p3");
-                img_case_3.src = img_src[2];
-                img_container.insertBefore(img_case_3, img_3_2);
-
-            }else{
-                img_case_3.classList.add("p4");
-                img_case_3.src = img_src[3];
-                img_container.appendChild(img_case_3);
-            }
-
-            break;   
-
-            case 4:  
-            const img_4_0 = img_container.children[0];
-            const img_4_1 = img_container.children[1];
-            const img_4_2 = img_container.children[2];
-            const img_4_3 = img_container.children[3];
-            const img_case_4 = document.createElement("img")
-
-            if(img_4_0.classList.contains("p2") && img_4_1.classList.contains("p3") && img_4_2.classList.contains("p4") && img_4_3.classList.contains("p5")){
-                img_case_4.classList.add("p1");
-                img_case_4.src = img_src[0];
-                img_container.insertBefore(img_case_4, img_4_0);
-
-            } else if(img_4_0.classList.contains("p1") && img_4_1.classList.contains("p3") && img_4_2.classList.contains("p4") && img_4_3.classList.contains("p5")){
-                img_case_4.classList.add("p2");
-                img_case_4.src = img_src[1];
-                img_container.insertBefore(img_case_4, img_4_1);
-
-            } else if(img_4_0.classList.contains("p1") && img_4_1.classList.contains("p2") && img_4_2.classList.contains("p4") && img_4_3.classList.contains("p5")){
-                img_case_4.classList.add("p3");
-                img_case_4.src = img_src[2];
-                img_container.insertBefore(img_case_4, img_4_2);
-
-            }else if(img_4_0.classList.contains("p1") && img_4_1.classList.contains("p2") && img_4_2.classList.contains("p3") && img_4_3.classList.contains("p5")){
-                img_case_4.classList.add("p4");
-                img_case_4.src = img_src[3];
-                img_container.insertBefore(img_case_4, img_4_3);
-
-            }else{
-                img_case_4.classList.add("p5");
-                img_case_4.src = img_src[4];
-                img_container.appendChild(img_case_4);
-            }
-
-            break;   
-
-    }   
+        }
+    }
 }
+
+
+
+
+
