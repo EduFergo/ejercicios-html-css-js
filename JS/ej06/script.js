@@ -30,7 +30,7 @@ function add_img() {
         input_value = 1;
     }
 
-    let is_valid = check_input(input_value, container_length);
+    let is_valid = check_add_input(input_value, container_length);
 
     if (is_valid) {
         add_calc(input_value);
@@ -40,6 +40,23 @@ function add_img() {
 }
 
 function dlt_img() {
+    remove_warning();
+    let input_value = input.value;
+    let container_length = img_container.children.length;
+
+    if (input_value == "") {
+        input_value = 1;
+    }
+
+    let is_valid = check_dlt_input(input_value, container_length);
+
+    if (is_valid) {
+        dlt_calc(input_value);
+    } else {
+        add_warning();
+    }
+
+
 }
 
 function remove_warning() {
@@ -58,7 +75,16 @@ function add_warning() {
 
 }
 
-function check_input(input_value, container_length) {
+function check_dlt_input(input_value, container_length) {
+    if (input_value > container_length) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+function check_add_input(input_value, container_length) {
     if (input_value > 5 - container_length) {
         return false;
     } else {
@@ -69,9 +95,9 @@ function check_input(input_value, container_length) {
 function add_calc(input_value) {
 
     for (let i = 0; i < input_value; i++) {
-        let update_container_lenght = img_container.children.length;
+        let update_container_length = img_container.children.length;
 
-        for (let j = 0; j <= update_container_lenght; j++) {
+        for (let j = 0; j <= update_container_length; j++) {
             let child = img_container.children[j];
 
             if (!child) {
@@ -94,6 +120,13 @@ function add_calc(input_value) {
         }
     }
 }
+
+function dlt_calc(input_value) {
+    img_container.removeChild(img_container.children[input_value-1]);
+}
+
+
+
 
 
 
