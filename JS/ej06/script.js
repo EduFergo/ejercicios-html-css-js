@@ -94,27 +94,37 @@ function check_add_input(input_value, container_length) {
 
 function add_calc(input_value) {
 
+    let counter=0;
+
     for (let i = 0; i < input_value; i++) {
         let update_container_length = img_container.children.length;
-
+        if(counter==input_value){
+            break;
+        }
         for (let j = 0; j <= update_container_length; j++) {
             let child = img_container.children[j];
-
+            
             if (!child) {
                 const img_add = document.createElement("img");
                 img_add.src = img[j].src;
                 img_add.classList.add("p" + img[j].p);
                 img_container.appendChild(img_add);
+                counter++;
+                if(counter==input_value){
+                    break;
+                }
 
             } else {
-                let img_class = child.className;
-                let img_num = img_class.charAt(1);
-                let existing_img = img.find(item => item.p === img_num);
+                let existing_img = img_container.querySelector(".p" + j)
                 if (!existing_img) {
                     const img_add = document.createElement("img");
                     img_add.src = img[j].src;
                     img_add.classList.add("p" + img[j].p);
-                    img_container.appendChild(img_add);
+                    img_container.insertBefore(img_add, child);
+                    counter++;
+                    if(counter==input_value){
+                        break;
+                    }
                 }
             }
         }
